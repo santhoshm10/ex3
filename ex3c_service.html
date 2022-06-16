@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Make a contribution!</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+<body ng-app="myapp" ng-controller="ctrl">
+<h1 align="center">Donation</h1>
+<div style="border: black 2px solid; padding: 20px; margin: auto; width: 700px;">
+<form name="myform">
+	
+	Amount(Rs.)<br> <input type="number" name="amt" placeholder="Amount in RS" required><br><br>
+	
+	Fund<br> 
+	<select required >
+	<option value=""></option>
+	<option value="1">Building</option>
+	<option value="2">cleaning</option>
+	<option value="3">road</option>
+
+	</select><br><br>
+	
+	Comment<br> <input type="text" name="comm" placeholder="comment"><br><br><br>
+	
+	<button ng-click="myfun()">pay</button>
+	<button>cancel</button>
+
+	<script >
+		var app=angular.module("myapp",[]);
+
+		app.service("msg",function(){
+			this.serv_fun=function(){
+				return "Thanks for your contribution! Have a nice day!";
+			}
+		})
+		
+		app.controller("ctrl",function($scope,msg){
+			$scope.value=false;
+			$scope.myfun=function(){
+				$scope.value=true;
+				
+				$scope.msg1=msg.serv_fun();}
+			
+		})
+	</script>
+
+</form>
+</div>
+<h1 align="center" ng-show="value">{{msg1}}</h1>
+</body>
+</html>

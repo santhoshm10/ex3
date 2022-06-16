@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+ <head>
+ <title>Marks Calculation</title>
+ <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+ </head>
+
+ <body ng-app = "myapp">
+ <div ng-controller = "CalController" >
+ <table>
+ <tr>
+ <th>Average Marks</th>
+ </tr>
+ <tr>
+ <td>Subject1:</td>
+ <td><input ng-model="s1"></td>
+ </tr>
+ <tr>
+ <td>Subject2:</td>
+ <td><input ng-model="s2"></td>
+ </tr>
+ <tr>
+ <td>Subject3:</td>
+ <td><input ng-model="s3"></td>
+ </tr>
+ <tr>
+ <td>Subject4:</td>
+ <td><input ng-model="s4"></td>
+ </tr>
+ <tr>
+ <td>Subject5:</td>
+ <td><input ng-model="s5"></td>
+ </tr>
+ </table>
+ <h2>Total Marks: {{total()}}</h2>
+ <h2>Average Marks: {{avg()}}</h2>
+ </div>
+ <script>
+ // Code goes here
+var ngApp = angular.module('myapp', []);
+ngApp.controller('CalController', function($scope){
+ 
+  $scope.s1 = 0;
+  $scope.s2 = 0;
+  $scope.s3 = 0;
+  $scope.s4 = 0;
+  $scope.s5 = 0;
+ 
+  $scope.total = function() {
+ $scope.s1 = parseInt($scope.s1);
+ $scope.s2 = parseInt($scope.s2);
+ $scope.s3 = parseInt($scope.s3);
+ $scope.s4 = parseInt($scope.s4);
+ $scope.s5 = parseInt($scope.s5);
+ $scope.tot = $scope.s1 + $scope.s2 + $scope.s3 + $scope.s4 + $scope.s5;
+ return $scope.tot;
+  }
+ 
+  $scope.avg = function() {
+    return $scope.total() / 5;
+  }
+ 
+});
+
+ </script>
+ </body>
+</html>
